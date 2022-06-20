@@ -30,7 +30,6 @@ public class _1920jrc4 {
 	public static void solve() {
 		for (int i =0; i<r; i++) {
 			output = check (output, rolls[i]);
-			System.out.print (output + " ");
 		}
 	}
 	public static void output () {
@@ -83,7 +82,7 @@ public class _1920jrc4 {
 	public static boolean prime (int e) {
 		int w = -1; 
 		for (int i = 2; i<27; i++) {
-			if (e % i == 0) {
+			if (e % i == 0 && i!=e) {
 				w++;
 			}
 		}
