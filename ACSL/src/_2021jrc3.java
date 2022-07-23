@@ -22,10 +22,10 @@ import java.util.*;
  */
 public class _2021jrc3 {
 	static Scanner sc;
+	static int output;
 	static String one;
 	static String two;
-	static String three; 
-	static int output;
+	static String three;
 	static StringTokenizer a;
 	static StringTokenizer b;
 	static StringTokenizer c;
