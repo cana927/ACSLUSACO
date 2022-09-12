@@ -1,7 +1,15 @@
 import java.util.*;
+/*
+4 6 8 1 5 6 3 5 1 1
+10 24 32 8 4 4 4 3 5
+10 22 32 8 7 4 4 3 5 5 5 6
+17 20 27 16 7 3 5 4 6 5 1 4
+43 46 50 40 5 3 1 2 4 4
+
+ */
 
 public class _1920jrc4 {
-	static Scanner sc;
+	static Scanner sc = new Scanner (System.in);
 	static int l1, l2, l3;
 	static int r;
 	static int [] rolls;
@@ -9,13 +17,15 @@ public class _1920jrc4 {
 	static int output;
 	
 	public static void main (String [] args) {
-		init();
-		solve();
-		output();
+		for (int i =0; i<5; i++) {
+			init();
+			solve();
+			output();
+		}
+		
 	}
 	
 	public static void init() {
-		Scanner sc = new Scanner (System.in);
 		
 		l1 = sc.nextInt();
 		l2 = sc.nextInt();
