@@ -5,6 +5,7 @@ public class _1819jrc4 {
 	static Scanner sc = new Scanner (System.in);
 	static StringTokenizer st;
 	static ArrayList<Integer> exp;
+	static ArrayList<String> type; 
 	static int output;
 	
 	public static void main(String [] args) {
@@ -17,17 +18,23 @@ public class _1819jrc4 {
 	public static void init() {
 		st = new StringTokenizer(sc.nextLine());
 		exp = new ArrayList<Integer>();
+		type = new ArrayList<String>();
 		while (st.hasMoreTokens()) {
 			String a = st.nextToken();
 			if (a.equals("*")) {
-				exp.add(-11);
+				type.add(a);
+				exp.add(-1);
 			} else if (a.equals("-")) {
-				exp.add(-12);
+				type.add(a);
+				exp.add(-1);
 			} else if (a.equals("+")) {
-				exp.add(-13);
+				type.add(a);
+				exp.add(-1);
 			} else if (a.equals("@")) {
-				exp.add(-14);
+				type.add(a);
+				exp.add(-1);
 			} else {
+				type.add("n");
 				exp.add(Integer.parseInt(a));
 			}
 		}
@@ -37,19 +44,28 @@ public class _1819jrc4 {
 	public static void solve() {
 		while (exp.size()>1) {
 			for (int i =0; i<exp.size(); i++) {
-				if (exp.get(i)== -11 && exp.get(i+1)>-11&& exp.get(i+2)>-11) {
+				if (type.get(i).equals ("*") && type.get(i+1).equals("n")&& type.get(i+2).equals("n")) {
 					exp.set(i, exp.get(i+1) * exp.get(i+2));
 					exp.remove(i+1);
 					exp.remove(i+1);
-				} else if (exp.get(i)== -12 && exp.get(i+1)>-11&& exp.get(i+2)>-11) {
+					type.set(i, "n");
+					type.remove(i+1);
+					type.remove(i+1);
+				} else if (type.get(i).equals ("-") && type.get(i+1).equals("n")&& type.get(i+2).equals("n")) {
 					exp.set(i, exp.get(i+1) - exp.get(i+2));
 					exp.remove(i+1);
 					exp.remove(i+1);
-				}else if (exp.get(i)== -13 && exp.get(i+1)>-11&& exp.get(i+2)>-11) {
+					type.set(i, "n");
+					type.remove(i+1);
+					type.remove(i+1);
+				}else if (type.get(i).equals ("+") && type.get(i+1).equals("n")&& type.get(i+2).equals("n")) {
 					exp.set(i, exp.get(i+1) + exp.get(i+2));
 					exp.remove(i+1);
 					exp.remove(i+1);
-				}else if (exp.get(i)== -14 && exp.get(i+1)>-11&& exp.get(i+2)>-11&& exp.get(i+3)>-11) {
+					type.set(i, "n");
+					type.remove(i+1);
+					type.remove(i+1);
+				}else if (type.get(i).equals ("@") && type.get(i+1).equals("n")&& type.get(i+2).equals("n")&& type.get(i+3).equals("n")) {
 					int a = exp.get(i+1);
 					int b = exp.get(i+2);
 					int c = exp.get(i+3);
@@ -61,6 +77,10 @@ public class _1819jrc4 {
 					exp.remove(i+1);
 					exp.remove(i+1);
 					exp.remove(i+1);
+					type.set(i, "n");
+					type.remove(i+1);
+					type.remove(i+1);
+					type.remove(i+1);
 				}
 			}
 		}
