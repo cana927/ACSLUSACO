@@ -17,6 +17,7 @@ public class _2021intc1 {
 		s = sc.nextInt();
 		d = sc.nextInt();
 		r = sc.nextInt();
+		output = 0;
 	}
 	public static void solve() {
 		int place = 0;
@@ -24,10 +25,9 @@ public class _2021intc1 {
 			place +=i;
 		}
 		for (int q =0 ; q<r; q++) {
-			int num = toOct(toDec(s) + place*(toDec(d)));
-			System.out.println (toDec(s));
+			int num = toOct(toDec(s) + place*(toDec(d))); 
 			String number = "" + num;
-			System.out.println (number);
+			//System.out.println (number);
 			for (int i=0;i<number.length();i++) {
 				output += number.charAt(i) - '0';
 			}
@@ -37,11 +37,11 @@ public class _2021intc1 {
 	public static void output () {
 		System.out.println (output);
 	}
-	public static int toDec (int a) {  // issue 
+	public static int toDec (int a) { 
 		String num = "" + a;
 		int sum=0;
 		for (int i =num.length()-1; i>=0; i--) {
-			sum += (num.charAt(i)-'0') * (Math.pow(8, i));
+			sum += (num.charAt(i)-'0') * (Math.pow(8, num.length()-i-1));
 		}
 		return sum;
 	}
@@ -61,8 +61,14 @@ public class _2021intc1 {
 /*
 2 3 5 
 221 2 4 
-1 4 20 3
+1 4 20 
 10 10 10
 3245 5 11 
+
+4567 7 65
+3141 5 26
+765 43 21
+704 1776 20
+77 7 100
 
  */
