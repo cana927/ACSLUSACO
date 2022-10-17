@@ -1,4 +1,4 @@
-package u2016Jan;
+
 import java.util.*;
 import java.io.*;
 
@@ -82,9 +82,9 @@ public class mowingField {
 		
 	}
 	public static void output () throws IOException {
-		out.print (output);
-		out.close();
+		out.println (output);
 		in.close();
+		out.close();
 	}
 	
 }
