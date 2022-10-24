@@ -79,6 +79,9 @@ public class mowingField {
 				}
 			}
 		}
+		if (output==1000) {
+			output = -1;
+		}
 		
 	}
 	public static void output () throws IOException {
