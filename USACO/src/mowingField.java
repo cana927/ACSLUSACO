@@ -79,7 +79,7 @@ public class mowingField {
 				}
 			}
 		}
-		if (output==1000) {
+		if (output==10000) {
 			output = -1;
 		}
 		
