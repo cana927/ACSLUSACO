@@ -1,56 +1,49 @@
 import java.util.*;
 
 public class _1920jrc1 {
-	static Scanner in;
-	
-	static char[] N;
-	static int P, D;
-	
-	static char[] output;
-	
-	
-	
+	static long N,  output;
+	static int D,P;
+	static Scanner sc = new Scanner (System.in);
 	public static void main (String [] args) {
-		init();
-		solve();
-		output();
+		for (int i=0; i<5; i++) {
+			init();
+			solve();
+			output();
+		}
 	}
-	
-	public static void init() { //initialization
-		in = new Scanner (System.in);
-
-		N = in.next().toCharArray();
-		
-		P = in.nextInt();
-		D = in.nextInt();
-		
-		output = new char [N.length];
+	public static void init() {
+		N = sc.nextLong();
+		P = sc.nextInt();
+		D = sc.nextInt();
+		output = 0;
 	}
-	
 	public static void solve() {
-		int digit = N[N.length - P] - '0';	
-		if (0<=digit && digit <= 3) {
-			digit += D;
-			output[N.length-P] = (char)(digit %10 + '0');
+		long digit = N;
+		if ((""+N).length() != P) {
+			digit = (int)(N % Math.pow(10, P));
 		}
-		else {
-			digit = Math.abs(digit - D); 
+		digit = (int)(digit / Math.pow(10, P-1));
+		
+		if (digit<5)  {
+			output = (long)((long)(N/Math.pow(10, P))*Math.pow(10, P));
+			
+			digit = digit + D;
+			digit = digit%10;
+			
+			output += digit*Math.pow(10, P-1);
+		}else {
+			output = (long)((long)(N/Math.pow(10, P))*Math.pow(10, P));
+			
+			digit = Math.abs(digit-D);
 			while (digit>9) {
-				digit /= 10; 
+				digit = digit /10;
 			}
-			output[N.length - P] = (char) (digit + '0');
-		}
-		for (int i = 0; i<N.length; i++) {
-			if (i <N.length-P) {
-				output[i] = N[i];
-			} else if (i > N.length - P) {
-				output [i] = 0;
-			}
+			
+			output += digit *Math.pow(10, P-1);
 		}
 	}
-	
-	public static void output () {
-		String outs = new String (output);
-		System.out.println(outs);
+	public static void output() {
+		System.out.println (output);
 	}
 }
+

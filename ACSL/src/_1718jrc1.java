@@ -1,73 +1,69 @@
 import java.util.*;
 
 public class _1718jrc1 {
-	static Scanner sc;
-	static ArrayList <Integer> cards;
-	static int tot; 
-	static boolean player;
-	static String output; 
+	static Scanner sc = new Scanner (System.in);
+	static ArrayList <Integer> player;
+	static int total;
+	static int[] steps;
+	static String output;
 	
 	public static void main (String [] args) {
-		init();
-		solve();
-		output();
+		for (int i=0; i<5; i++) {
+			init();
+			solve();
+			output();
+		}
 		
 	}
-	
-	public static void init () {
-		sc = new Scanner (System.in);
-		cards = new ArrayList <Integer> ();
-		tot = sc.nextInt();
-		cards.add(sc.nextInt());
-		cards.add(sc.nextInt());
-		cards.add(sc.nextInt());
-		boolean player = true;
+	public static void init() {
+		total = sc.nextInt();
+		player = new ArrayList<Integer>();
+		for (int i =0;i<3; i++) {
+			player.add(sc.nextInt());
+		}
+		steps = new int [7];
+		for (int i =0; i<7; i++) {
+			steps[i] = sc.nextInt();
+		}
 		output = "";
-		
 	}
-	public static void solve () {
-		while (tot <=99) {
-			tot = getNewTotal( tot, cards.get(0));
-			cards.remove (0);
-			if (tot>99) {
+	public static void solve() {
+		int r = 0;
+		while (total <=99) {
+			total+= value(player.get(0),total);
+			if (total>99) {
+				output += total + ", dealer";
 				break;
-			}else {
-				player = false;
 			}
-			cards.add(sc.nextInt());
-			tot = getNewTotal(tot, sc.nextInt());
-			if (tot>99) {
-				break;
-			}else {
-				player = true;
+			player.remove(0);
+			player.add(steps[r]);
+			r++;
+			
+			total += value(steps[r], total);
+			r++;
+			if (total>99) {
+				output += total + ", player";
 			}
-		}
-		output += tot + ", ";
-		if (player ) {
-			output += "dealer";
-		}
-		else {
-			output += "player";
+
 		}
 	}
-	public static void output () {
+	public static void output() {
 		System.out.println (output);
 	}
-	
-	public static int getNewTotal (int r, int a) {
-		if (a == 9) {
-			return r;
+	public static int value (int r, int total) {
+		if (r == 9) {
+			return 0;
 		}
-		if (a ==4) {
-			return r -10;
+		if (r == 4) {
+			return -10;
 		}
-		if (a == 0) {
-			if (r + 11 >99) {
-				return r + 1;
-			} else {
-				return r + 11;
+		if (r == 0 ) {
+			if (total >= 89) {
+				return 1;
 			}
+			return 11;
 		}
-		return r + a;
+		return r;
+		
 	}
 }
