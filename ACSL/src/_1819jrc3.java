@@ -16,13 +16,13 @@ public class _1819jrc3 {
 	}
 	
 	public static void init() {
-		r = sc.nextInt();
-		c = sc.nextInt();
+		r = sc.nextInt(); // row
+		c = sc.nextInt(); //column
 		s = sc.nextInt();
 		output = "";
 		int n = sc.nextInt();
 		table = new int [r][c];
-		for (int i =0; i<n; i++) {
+		for (int i =0; i<n; i++) { // blocked points
 			int a = sc.nextInt();
 			table[a/c][(a-1)%c] = 1;
 		}
