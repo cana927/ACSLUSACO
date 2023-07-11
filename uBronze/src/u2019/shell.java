@@ -1,4 +1,4 @@
-package u2019;
+//package u2019;
 import java.util.*;
 import java.io.*;
 
@@ -10,7 +10,6 @@ public class shell {
 		int N = Integer.parseInt(in.readLine()); 
 		
 		Query [] queries = new Query [N];
-		// int [][] queries = int [N][3];
 		
 		StringTokenizer st;
 		
@@ -52,8 +51,9 @@ public class shell {
 		}
 		return score;
 	}
+	
 	public static void swap (int i1, int i2, int [] shells) {
-		int temp = shells[1];
+		int temp = shells[i1];
 		shells [i1] = shells [i2];
 		shells [i2] = temp;
 	}
