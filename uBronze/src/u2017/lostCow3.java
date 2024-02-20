@@ -14,18 +14,23 @@ public class lostCow3 {
 		
 		int distance = 0;
 		int r = 1;
-		
-		while (Math.abs(x+r) <= Math.abs(y) || (x+r)*y<0) { 
-			distance += 3*Math.abs(r)/2;
-			if (r > 0) {
-				r = (r + 1)*(-1);
-			}
-			else {
+		if (x>y) {
+
+			while (x+r > y) { 
+				distance += 3*Math.abs(r)/2;
 				r = r*(-2);
+				//System.out.println (r + " " +distance);
 			}
-			//System.out.println (distance);
+			distance += 3*Math.abs(r)/2  - Math.abs(y-(x+r));
 		}
-		distance += 3*Math.abs(r)/2  - Math.abs(y-(x+r));
+		else if (y>x) {
+			while (x+r < y) { 
+				distance += 3*Math.abs(r)/2;
+				r = r*(-2);
+				//System.out.println (r + " " + distance);
+			}
+			distance += 3*Math.abs(r)/2  - Math.abs(y-(x+r));
+		}
 		
 		out.print (distance);
 		out.close();
